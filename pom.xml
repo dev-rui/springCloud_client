@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>euraka-client</artifactId>
+    <artifactId>eureka-client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>euraka-client</name>
+    <name>eureka-client</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -35,11 +35,26 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
-       <!-- <dependency>
+       <!-- 进行动态刷新和系统监控-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <!--获取config配置中心失败重试-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.retry</groupId>
+            <artifactId>spring-retry</artifactId>
+        </dependency>
+<!--        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-security</artifactId>
-        </dependency>
--->
+        </dependency>-->
+
        <!-- 使用consul用于注册服务-->
       <!--  <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -65,7 +80,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-           <!-- <plugin>
+           <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.1.0</version>
@@ -79,10 +94,10 @@
                     </execution>
                 </executions>
                 <configuration>
-                    &lt;!&ndash;Dockerfile文件位置&ndash;&gt;
-                    &lt;!&ndash; <dockerDirectory>${project.basedir}/src/main/java/docker</dockerDirectory>&ndash;&gt;
-                    <imageName>${docker.repository}/${docker.registry.name}/${project.artifactId}:${project.version}</imageName>
-                    &lt;!&ndash;覆盖已存在的标签 镜像&ndash;&gt;
+                    <!--Dockerfile文件位置-->
+                    <!--<dockerDirectory>${project.basedir}/src/main/java/docker</dockerDirectory>-->
+                    <imageName>${docker.registry.name}/${project.artifactId}:${project.version}</imageName>
+                    <!--覆盖已存在的标签 镜像-->
                     <forceTags>true</forceTags>
                     <dockerHost>http://192.168.36.129:2375</dockerHost>
                     <baseImage>java:8</baseImage>
@@ -94,11 +109,11 @@
                              <include>${project.build.finalName}.jar</include>
                         </resource>
                     </resources>
-                    &lt;!&ndash;上传仓库认证 需要在Maven settiing.xml中配置&ndash;&gt;
-                    <serverId>Harbor-reg</serverId>
-                    <registryUrl>http://red.sunny.cn</registryUrl>
+                    <!--上传仓库认证 需要在Maven settiing.xml中配置-->
+                   <!-- <serverId>Harbor-reg</serverId>
+                    <registryUrl>http://red.sunny.cn</registryUrl>-->
                 </configuration>
-            </plugin>-->
+            </plugin>
         </plugins>
     </build>
 

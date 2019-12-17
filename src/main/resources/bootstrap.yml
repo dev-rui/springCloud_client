@@ -3,17 +3,31 @@ spring:
     name: eureka-client
   cloud:
     config:
-      uri: http://localhost:8185/
-      profile: dev
+#      uri: http://localhost:8185/
+      profile: default
       label: master
-
-
+      username: user
+      password: e3b37027-e3b6-4b21-8fdf-4ffa7a87cb28
+      discovery:
+        enabled: true
+        service-id: config-server
+      #失败快速响应
+      fail-fast: true
+      retry:
+        initial-interval: 1000   #初始间隔
+        max-attempts: 6    #最大重试次数
+        multiplier: 1.1    #下一间隔乘数
+        max-interval: 2000   #最大间隔时间
+#关闭security认证
+management:
+  security:
+    enabled: false
 server:
   port: 8182
 
-#eureka:
-#  client:
-#   serviceUrl:
-#    defaultZone:  http://localhost:8181/eureka/
-#  instance:
-#    instance-id: ${spring.application.name}:${random.int}
+eureka:
+  client:
+   serviceUrl:
+    defaultZone:  http://192.168.36.129:8181/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${random.int}

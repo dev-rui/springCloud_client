@@ -1,4 +1,4 @@
-package com.example.eurakaclient;
+package com.example.eurekaclient;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,10 +9,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @EnableDiscoveryClient
 @SpringBootApplication
-public class EurakaClientApplication {
+public class EurekaClientApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(EurakaClientApplication.class, args);
+        SpringApplication.run(EurekaClientApplication.class, args);
     }
 
 }
