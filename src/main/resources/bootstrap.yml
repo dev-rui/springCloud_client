@@ -28,6 +28,6 @@ server:
 eureka:
   client:
    serviceUrl:
-    defaultZone:  http://192.168.36.129:8181/eureka/
+    defaultZone:  http://eureka-server:8181/eureka/
   instance:
     instance-id: ${spring.application.name}:${random.int}
