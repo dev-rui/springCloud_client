@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.4.RELEASE</version>
+        <version>1.5.10.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
@@ -16,7 +16,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <spring-cloud.version>Dalston.SR1</spring-cloud.version>
+        <spring-cloud.version>Dalston.SR5</spring-cloud.version>
         <!--docker镜像仓库-->
         <docker.repository>red.sunny.cn</docker.repository>
         <docker.registry.name>springcloud</docker.registry.name>
@@ -55,6 +55,19 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-sleuth</artifactId>
         </dependency>
+ <!--       <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-sleuth-stream</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+        </dependency>
 <!--        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-security</artifactId>
@@ -85,7 +98,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-           <plugin>
+           <!--<plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.1.0</version>
@@ -99,10 +112,10 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <!--Dockerfile文件位置-->
-                    <!--<dockerDirectory>${project.basedir}/src/main/java/docker</dockerDirectory>-->
+                    &lt;!&ndash;Dockerfile文件位置&ndash;&gt;
+                    &lt;!&ndash;<dockerDirectory>${project.basedir}/src/main/java/docker</dockerDirectory>&ndash;&gt;
                     <imageName>${docker.registry.name}/${project.artifactId}:${project.version}</imageName>
-                    <!--覆盖已存在的标签 镜像-->
+                    &lt;!&ndash;覆盖已存在的标签 镜像&ndash;&gt;
                     <forceTags>true</forceTags>
                     <dockerHost>http://129.211.74.124:2375</dockerHost>
                     <baseImage>java:8</baseImage>
@@ -114,11 +127,11 @@
                              <include>${project.build.finalName}.jar</include>
                         </resource>
                     </resources>
-                    <!--上传仓库认证 需要在Maven settiing.xml中配置-->
-                   <!-- <serverId>Harbor-reg</serverId>
-                    <registryUrl>http://red.sunny.cn</registryUrl>-->
+                    &lt;!&ndash;上传仓库认证 需要在Maven settiing.xml中配置&ndash;&gt;
+                   &lt;!&ndash; <serverId>Harbor-reg</serverId>
+                    <registryUrl>http://red.sunny.cn</registryUrl>&ndash;&gt;
                 </configuration>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 

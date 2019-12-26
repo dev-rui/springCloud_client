@@ -18,6 +18,14 @@ spring:
         max-attempts: 6    #最大重试次数
         multiplier: 1.1    #下一间隔乘数
         max-interval: 2000   #最大间隔时间
+
+  rabbitmq:
+    addresses: amqp://192.168.36.129:5772
+    username:  user
+    password: 123456
+#  zipkin:
+#    base-url: http://localhost:9411
+
 #关闭security认证
 management:
   security:
@@ -31,3 +39,4 @@ eureka:
     defaultZone:  http://localhost:8181/eureka/
   instance:
     instance-id: ${spring.application.name}:${random.int}
+
